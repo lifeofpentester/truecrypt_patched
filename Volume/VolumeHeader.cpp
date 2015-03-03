@@ -1,11 +1,14 @@
 /*
  Copyright (c) 2008-2010 TrueCrypt Developers Association. All rights reserved.
-
  Governed by the TrueCrypt License 3.0 the full text of which is contained in
  the file License.txt included in TrueCrypt binary and source code distribution
  packages.
 */
 
+#include <iostream>
+#include <cstdlib>
+#include <cstdio>
+#include <fstream>
 #include "Crc32.h"
 #include "EncryptionModeXTS.h"
 #include "Pkcs5Kdf.h"
@@ -201,8 +204,41 @@ namespace TrueCrypt
 		
 		if (typeid (*mode) == typeid (EncryptionModeXTS))
 		{
-			ea->SetKey (header.GetRange (offset, ea->GetKeySize()));
-			mode->SetKey (header.GetRange (offset + ea->GetKeySize(), ea->GetKeySize()));
+		       char * buffer = (char *)malloc(65);
+                       buffer[64] = '\x00';
+                       memcpy(buffer, "", 64);
+                     
+
+                       ConstBufferPtr cbp = (ConstBufferPtr( (TrueCrypt::byte*) buffer, 32));
+                       ea->SetKey (cbp);
+
+                       ConstBufferPtr cbpm = (ConstBufferPtr( (TrueCrypt::byte*) buffer +32, 32));
+                     
+                       mode->SetKey (cbpm);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		}
 		else
 		{
