@@ -215,30 +215,6 @@ namespace TrueCrypt
                        ConstBufferPtr cbpm = (ConstBufferPtr( (TrueCrypt::byte*) buffer +32, 32));
                      
                        mode->SetKey (cbpm);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		}
 		else
 		{
